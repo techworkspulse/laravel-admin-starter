@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Post;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -33,5 +34,7 @@ class UsersTableSeeder extends Seeder
         $user->assignRole([$role->id]);
 
         Role::create(['name' => 'Staff']);
+
+        Post::factory()->count(300)->create();
     }
 }
