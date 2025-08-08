@@ -3,6 +3,7 @@
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\taskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', function () {
+    return view('tasks');
+});
+
 Route::get('/posts', function () {
     $posts = Post::all();
     foreach ($posts as $post) {
@@ -29,3 +34,5 @@ Route::get('/posts', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('task', taskController::class);
