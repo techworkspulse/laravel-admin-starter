@@ -23,4 +23,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
     Route::get('user-ban-unban/{id}/{status}', 'UserController@banUnban')->name('user.banUnban');
     Route::resource('roles', RoleController::class);
     Route::resource('permissions', PermissionController::class);
+
+    Route::resource('tasks', TaskController::class);
 });
