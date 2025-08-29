@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Task;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 use Spatie\Permission\Models\Permission;
