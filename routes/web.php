@@ -3,6 +3,7 @@
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,12 +21,15 @@ Route::get('/', function () {
 });
 
 Route::get('/posts', function () {
-    $posts = Post::all();
+    $posts = Post::with('author')->get();
+
     foreach ($posts as $post) {
-        echo $post->author->name . "<br>";
+        echo optional($post->author)->name ?? 'No author' . "<br>";
     }
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('/tasks', TaskController::class);
